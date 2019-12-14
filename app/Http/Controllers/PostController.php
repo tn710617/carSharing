@@ -32,7 +32,7 @@ class PostController extends Controller
 
         $toBeInserted['departure_date'] = Carbon::parse($toBeInserted['departure_date']);
 
-        $post = Post::create($toBeInserted);
+        $post = Post::create($toBeInserted)->refresh();
 
         return Helper::result(true, '', [new \App\Http\Resources\Post($post)], 200);
     }
