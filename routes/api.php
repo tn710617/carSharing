@@ -18,6 +18,7 @@ Route::apiResource('register', 'UsersController')->only(['store']);
 Route::middleware('auth:api')->group(function() {
     Route::post('logout', 'AuthController@logout');
     Route::apiResource('post', 'PostController')->only(['store', 'index']);
+    Route::get('getPTTInfo', 'PostController@getPTTInfo');
 });
 
 
