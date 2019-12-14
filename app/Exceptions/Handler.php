@@ -2,8 +2,11 @@
 
 namespace App\Exceptions;
 
+use App\Helper;
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
 
 class Handler extends ExceptionHandler
 {
@@ -46,6 +49,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+        if ($exception instanceof AuthenticationException)
+        {
+            return Helper::result(false, 'Unauthenticated', [], Response::HTTP_UNAUTHORIZED);
+        }
         return parent::render($request, $exception);
     }
 }
