@@ -19,4 +19,11 @@ class AuthController extends Controller
 
         return Helper::result(true, '', [['token' => $token]], 200);
     }
+
+    public function logout()
+    {
+        auth('api')->logout();
+
+        return Helper::result(true, '', [], 200);
+    }
 }

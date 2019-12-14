@@ -15,6 +15,9 @@ use Illuminate\Http\Request;
 */
 Route::post('login', 'AuthController@login');
 Route::apiResource('register', 'UsersController')->only(['store']);
+Route::middleware('auth:api')->group(function() {
+    Route::post('logout', 'AuthController@logout');
+});
 
 
 
