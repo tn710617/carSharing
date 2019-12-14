@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class Helper
 {
+
     public static function validation(Array $toBeValidated, Request $request)
     {
         $validator = validator::make($request->all(), $toBeValidated);
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return $validator->errors()->first();
         }
     }
