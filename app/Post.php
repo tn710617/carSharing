@@ -11,4 +11,9 @@ class Post extends Model
     const TYPE_PTT = 2;
 
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
