@@ -8,18 +8,19 @@ use App\User;
 
 class UsersController extends Controller
 {
-    public function store(Request $request) {
+
+    public function store(Request $request)
+    {
         $toBeValidated = [
-            'email' => 'required|email|max:255|unique:users',
+            'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed|max:255'
         ];
-        if ($failMessage = Helper::validation($toBeValidated, $request))
-        {
+        if ($failMessage = Helper::validation($toBeValidated, $request)) {
             return Helper::result(false, $failMessage, [], '400');
         }
 
         User::forceCreate([
-            'email' => $request->email,
+            'email'    => $request->email,
             'password' => bcrypt($request->password),
         ]);
 

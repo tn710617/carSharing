@@ -10,19 +10,19 @@ use Illuminate\Http\Response;
 
 class PostController extends Controller
 {
+
     public function store(Request $request)
     {
         $toBeValidated = [
-            'subject' => 'required|max:20',
-            'seat' => 'required|int',
+            'subject'        => 'required|max:20',
+            'seat'           => 'required|int',
             'departure_date' => 'required|date',
-            'departure' => 'required|string',
-            'destination' => 'required|string',
-            'description' => 'required|string',
+            'departure'      => 'required|string',
+            'destination'    => 'required|string',
+            'description'    => 'required|string',
         ];
 
-        if ($failMessage = Helper::validation($toBeValidated, $request))
-        {
+        if ($failMessage = Helper::validation($toBeValidated, $request)) {
             return Helper::result(false, $failMessage, [], Response::HTTP_BAD_REQUEST);
         }
 
