@@ -27,7 +27,8 @@ class Post extends JsonResource
             'description'    => $this->description,
             'ptt_url'        => $this->ptt_url,
             'type'           => $this->type,
-            'created_at'     => $this->created_at
+            'created_at'     => $this->created_at,
+            'user'           => new User($this->user)
         ];
     }
 }
