@@ -97,7 +97,7 @@ class PostController extends Controller
                     });
             });
 
-        return new PostCollection($posts->paginate($row)->appends(request()->query->all()));
+        return new PostCollection($posts->latest('created_at')->paginate($row)->appends(request()->query->all()));
     }
 
     public function getPTTInfo()
