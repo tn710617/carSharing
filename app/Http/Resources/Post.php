@@ -19,7 +19,7 @@ class Post extends JsonResource
         return [
             'id'             => $this->id,
             'user_id'        => $this->user_id,
-            'seat'           => 6,
+            'seat'           => $this->seat,
             'subject'        => $this->subject,
             'departure_date' => Carbon::parse($this->departure_date)->format('m/d'),
             'departure'      => $this->departure,
