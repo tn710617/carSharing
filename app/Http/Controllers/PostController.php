@@ -76,11 +76,12 @@ class PostController extends Controller
             });
         })->when(request()->type == Post::TYPE_INTERNAL,
             function ($query) {
-                $query->when(request()->departure, function ($query) {
-                    $query->where('departure', 'LIKE', '%'.request()->departure.'%');
-                })->when(request()->destination, function ($query) {
-                    $query->where('destination', 'LIKE', '%'.request()->destination.'%');
-                });
+                $query->where('type', request()->type)
+                    ->when(request()->departure, function ($query) {
+                        $query->where('departure', 'LIKE', '%'.request()->departure.'%');
+                    })->when(request()->destination, function ($query) {
+                        $query->where('destination', 'LIKE', '%'.request()->destination.'%');
+                    });
             })->when(request()->type == Post::TYPE_PTT,
             function ($query) {
                 $query->where('type', request()->type)
